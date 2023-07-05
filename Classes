@@ -1,0 +1,53 @@
+class Artigos:
+    def __init__(self, titulo_art, autor_art):
+        self.titulo_art = titulo_art
+        self.autor_art = autor_art
+
+    def get_artigo(self):
+        return "Título: " + self.titulo_art + "\n" + "Autor: " + self.autor_art
+
+
+
+class Edicao:
+    def __init__(self, numero_ed, volume_ed, data_ed):
+        self.numero_ed = numero_ed
+        self.volume_ed = volume_ed
+        self.data_ed = data_ed
+        self.artigo = []
+
+    def add_artigo(self, artigo):
+        self.artigo.append(artigo)
+
+    def get_edicao(self):
+        return "Número da edição: " + str(self.numero_ed) + "\n" + "Volume: " + str(self.volume_ed) + "\n" + "Data: " + str(self.data_ed)
+
+    def ver_artigos(self):
+        data = " "
+        for artigo in self.artigo:
+            print(artigo.get_artigo())
+
+    def get_numeros_de_art(self):
+        return len(self.artigo)
+
+
+
+class Revista_Cientifica:
+    def __init__(self, titulo, issn, periodicidade):
+        self.titulo = titulo
+        self.issn = issn
+        self.periodicidade = periodicidade
+        self.edicao = []
+
+    def add_edicao(self, edicao):
+        numero_art = edicao.get_numeros_de_art()
+        if(numero_art >= 10 and numero_art <= 15):
+            self.edicao.append(edicao)
+            return "Edição realizada com sucesso!"
+        else:
+            return "É preciso conter no mínimo 10 artigos e no máximo 15 artigos para poder adicionar uma edição!"
+
+    def ver_edicao(self):
+        data = ""
+        for edicao in self.edicao:
+            print(edicao.get_edicao())
+
